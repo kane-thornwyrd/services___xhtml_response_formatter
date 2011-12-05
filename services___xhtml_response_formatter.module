@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * .module file for service_xhtmlformatview with nearly all hooks implementations.
+ */
+
+/**
+* Implements hook_rest_server_response_formatters_alter();
+*/
+function services___xhtml_response_formatter_rest_server_response_formatters_alter(&$formatters) {
+  include_once drupal_get_path('module', 'rest_server').'/includes/node_resource.models.inc';
+  $formatters['xhtml'] = array(
+    'mime types' => array('text/html'),
+    'view' => 'XHtmlFormatView',
+  );
+}
+
+function services___xhtml_response_formatter_autoload_info() {
+  return array(
+    'XHtmlFormatView' => array(
+      'file' => 'XHtmlFormatView.inc',
+    ),
+  );
+}
