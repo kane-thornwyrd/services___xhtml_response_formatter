@@ -6,10 +6,12 @@
  * class implementation.
  */
 class XHtmlFormatView extends RESTServerView {
+  //TODO Better check if the stdClass we try to render is a node for real.
 
   /**
    * Function called by RESTServer to display the ressource.
    * @return string
+   * The rendered xHTML.
    */
   public function render() {
     $test = $this->model;
@@ -18,8 +20,9 @@ class XHtmlFormatView extends RESTServerView {
 
   /**
    * Specific sub rendering function
-   * @param type $$content
-   * @return type
+   * @param mixed $content
+   * @return string
+   * The rendered xHTML.
    */
   protected function renderXHtml($content) {
     $out = '';
@@ -42,15 +45,26 @@ class XHtmlFormatView extends RESTServerView {
     return $out;
   }
 
-  protected function isAstdClass($node) {
-    $res = (version_compare(PHP_VERSION, '5.3.0') >= 0)
-      ? is_a($node, 'stdClass')
-      : ($node instanceof stdClass);
-    return $res;
+  /**
+   * Check if $var is a stdClass in the PHP 5.2 and PHP 5.3 styles.
+   * @param mixed $var
+   * @return bool
+   * Is $var a stdClass
+   */
+  protected function isAstdClass($var) {
+    return (version_compare(PHP_VERSION, '5.3.0') >= 0)
+      ? is_a($var, 'stdClass')
+      : ($var instanceof stdClass);
   }
 
-  protected function renderstdClass($node) {
-    return drupal_render(node_view($node));
+  /**
+   * In this context we can assume that a stdClass is in fact a node.
+   * @param stdClass $content
+   * @return string
+   * The rendered xHTML.
+   */
+  protected function renderstdClass(stdClass $content) {
+    return drupal_render(node_view($content));
   }
 
 }
