@@ -6,8 +6,9 @@
  * class implementation.
  */
 class XHtmlFormatView extends RESTServerView {
-  // TODO Better check if the stdClass we try to render is a node for real.
+
   /**
+   *
    * Function called by RESTServer to display the ressource.
    * @return string
    *   The rendered xHTML.
@@ -18,12 +19,16 @@ class XHtmlFormatView extends RESTServerView {
   }
 
   /**
+   *
    * Specific sub rendering function
+   * 
    * @param mixed $content is the thing to render.
+   *
    * @return string
    *   The rendered xHTML.
    */
   protected function renderXHtml($content) {
+    // TODO Better check if the stdClass we try to render is a node for real.
     $out = '';
     if (is_array($content)) {
       foreach ($content as $element) {
@@ -45,8 +50,11 @@ class XHtmlFormatView extends RESTServerView {
   }
 
   /**
+   *
    * Check if $var is a stdClass in the PHP 5.2 and PHP 5.3 styles.
+   *
    * @param mixed $var is the one we test.
+   *
    * @return bool
    *   Is $var a stdClass
    */
@@ -57,8 +65,11 @@ class XHtmlFormatView extends RESTServerView {
   }
 
   /**
+   *
    * In this context we can assume that a stdClass is in fact a node.
+   *
    * @param stdClass $content
+   *
    * @return string
    *   The rendered xHTML.
    */
