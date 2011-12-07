@@ -1,6 +1,0 @@
-<?php
-
-/**
- * @file
- * .install file for service_xhtmlformatview with that embed all needed hooks implementations to install/uninstall this module.
- */
