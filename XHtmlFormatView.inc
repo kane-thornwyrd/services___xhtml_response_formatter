@@ -40,7 +40,7 @@ class XHtmlFormatView extends RESTServerView {
       }
     }
     elseif ($this->isAstdClass($content)) {
-      $out = $this->renderstdClass($$content);
+      $out = $this->renderstdClass($content);
     }
     else {
       $out = print_r($content, TRUE);
