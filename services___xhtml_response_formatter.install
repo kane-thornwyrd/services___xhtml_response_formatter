@@ -1,8 +1,0 @@
-<?php
-
-/**
- * @file
- * .install file for services___xhtml_response_formatter with
- * all needed hooks implementations to install/uninstall this module.
- *
- */
